@@ -1,56 +1,17 @@
-kata/php
-========
+# Game Of Life Kata
 
-PHP skeleton for doing coding katas
------------------------------------
+El juego de la vida es un autómata celular diseñado por el matemático británico John Horton Conway en 1970.
 
-*Code Kata* is a term coined by Dave Thomas, co-author of the book
-The Pragmatic Programmer, in a bow to the Japanese concept of kata
-in the martial arts. A code kata is an exercise in programming which
-helps a programmer hone their skills through practice and repetition.
-As of October 2011, Dave Thomas has published 21 different katas.
+Hizo su primera aparición pública en el número de octubre de 1970 de la revista Scientific American, en la columna de juegos matemáticos de Martin Gardner. Desde un punto de vista teórico, es interesante porque es equivalente a una máquina universal de Turing, es decir, todo lo que se puede computar algorítmicamente se puede computar en el juego de la vida.
 
-You can find some to start practicing [here](http://codingdojo.org/cgi-bin/index.pl?KataCatalogue).
+Desde su publicación, ha atraído mucho interés debido a la gran variabilidad de la evolución de los patrones. Se considera que la vida es un buen ejemplo de emergencia y autoorganización. Es interesante para los científicos, matemáticos, economistas y otros observar cómo patrones complejos pueden provenir de la implementación de reglas muy sencillas.
 
-When you do programming katas, you use TDD. That's why I have included
-PHPUnit, Mockery, PHPSpec and Prophecy as composer dependencies. Choose
-the testing framework you feel more comfortable (or play with both).
+El juego de la vida es en realidad un juego de cero jugadores, lo que quiere decir que su evolución está determinada por el estado inicial y no necesita ninguna entrada de datos posterior. El "tablero de juego" es una malla formada por cuadrados ("células") que se extiende por el infinito en todas las direcciones. Cada célula tiene 8 células vecinas, que son las que están próximas a ella, incluidas las diagonales. Las células tienen dos estados: están "vivas" o "muertas" (o "encendidas" y "apagadas"). El estado de la malla evoluciona a lo largo de unidades de tiempo discretas (se podría decir que por turnos). El estado de todas las células se tiene en cuenta para calcular el estado de las mismas al turno siguiente. Todas las células se actualizan simultáneamente.
 
-Practicing a kata
-=================
+Las transiciones dependen del número de células vecinas vivas:
 
-Let's imagine you want to practice "Bowling game kata". Details about
-this kata can be found [here](http://codingdojo.org/cgi-bin/wiki.pl?KataBowling).
+- Una célula muerta con exactamente 3 células vecinas vivas "nace" (al turno siguiente estará viva).
 
-You will need composer.
+- Una célula viva con 2 ó 3 células vecinas vivas sigue viva, en otro caso muere o permanece muerta (por "soledad" o "superpoblación").
 
-    curl -sS https://getcomposer.org/installer | php
-
-Then, use "create-project" command to clone this project as a template
-and create a new one in your computer.
-
-    php composer.phar create-project kata/php bowling-kata dev-master
-
-Then add your classes to 'src/Kata' and your test cases to
-'src/Kata/Tests' and run 'php bin/phpunit' to run your tests.
-
-    php bin/phpunit
-
-TestCase examples
-=================
-
-If you run 'php bin/phpunit' you will see the following output.
-
-    PHPUnit 3.8-gc4f2bcd by Sebastian Bergmann.
-    
-    Configuration read from /Users/carlosbuenosvinos/Documents/Web/bowling/phpunit.xml
-    
-    ...
-    
-    Time: 91 ms, Memory: 1.75Mb
-    OK (3 tests, 3 assertions)
-
-That's because you will find one class and its TestCase in the project
-in order to help you. You can delete them.
-
-Adder is a class that adds two numbers and AdderTest tests that.
+![Game Of Life Rules](resources/game-of-life-rules.jpg)
