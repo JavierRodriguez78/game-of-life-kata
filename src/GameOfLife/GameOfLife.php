@@ -10,6 +10,8 @@ class GameOfLife
     const UNDERPOPULATION_THRESHOLD = 2;
     const OVERPOPULATION_THRESHOLD = 3;
     const REBORN_CONDITION = 3;
+    const ALIVE = 1;
+    const DEAD = 0;
 
     private $world;
 
@@ -19,28 +21,30 @@ class GameOfLife
             $this->itsAlive($currentStatus)
             && $this->itsUnderpopulation($aliveNeighbours)
         ) {
-            return 'dead';
+            return self::DEAD;
         }
 
         if (
             $this->itsAlive($currentStatus)
             && $this->itsEquilibred($aliveNeighbours)
         ) {
-            return 'alive';
+            return self::ALIVE;
         }
 
         if (
             $this->itsAlive($currentStatus)
             && $this->itsOverpopulation($aliveNeighbours)
         ) {
-            return 'dead';
+            return self::DEAD;
         }
 
         if (
             !$this->itsAlive($currentStatus)
             && $this->shouldReborn($aliveNeighbours)
         ) {
-            return 'alive';
+            return self::ALIVE;
+        } else {
+            return self::DEAD;
         }
     }
 
@@ -52,8 +56,8 @@ class GameOfLife
     private function itsEquilibred($aliveNeighbours)
     {
         if (
-            $aliveNeighbours >= self::UNDERPOPULATION_THRESHOLD
-            && $aliveNeighbours <= self::OVERPOPULATION_THRESHOLD
+            $aliveNeighbours == self::UNDERPOPULATION_THRESHOLD
+            || $aliveNeighbours == self::OVERPOPULATION_THRESHOLD
         ) {
             return true;
         }
@@ -73,7 +77,7 @@ class GameOfLife
 
     private function itsAlive($currentStatus)
     {
-        return $currentStatus === 'alive';
+        return $currentStatus === self::ALIVE;
     }
 
     public function initializeWorld($width, $height)
@@ -128,11 +132,28 @@ class GameOfLife
         foreach ($neighbours as $neighbour) {
             list($x, $y) = $neighbour;
 
-            if ($this->world[$x][$y] === 1) {
+            if ($this->itsAlive($this->world[$y][$x])) {
                 $alive++;
             }
         }
 
         return $alive;
+    }
+
+    public function getNextGeneration()
+    {
+        $maxHeight = count($this->world);
+        $maxWidth = count($this->world[0]);
+        $nextWorld = [];
+
+        for ($y = 0; $y < $maxHeight; $y++) {
+            $newRow = [];
+            for ($x = 0; $x < $maxWidth; $x++) {
+                $newRow[] = $this->getNextStatus($this->world[$y][$x], $this->countAliveNeighbours([$x, $y]));
+            }
+            $nextWorld[] = $newRow;
+        }
+
+        $this->setWorld($nextWorld);
     }
 }
