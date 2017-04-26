@@ -32,6 +32,10 @@ class GameOfLife
         ) {
             return 'dead';
         }
+
+        if ($currentStatus === 'dead' && $aliveNeighbours === 3) {
+            return 'alive';
+        }
     }
 
     private function itsUnderpopulation($aliveNeighbours)
