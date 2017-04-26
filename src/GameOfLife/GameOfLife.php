@@ -11,6 +11,8 @@ class GameOfLife
     const OVERPOPULATION_THRESHOLD = 3;
     const REBORN_CONDITION = 3;
 
+    private $world;
+
     public function getNextStatus($currentStatus, $aliveNeighbours)
     {
         if (
@@ -72,5 +74,26 @@ class GameOfLife
     private function itsAlive($currentStatus)
     {
         return $currentStatus === 'alive';
+    }
+
+    public function initializeWorld($width, $height)
+    {
+        $world = [];
+
+        for ($h = 0; $h < $height; $h++) {
+            $row = [];
+            for ($w = 0; $w < $width; $w++) {
+                $row[] = 0;
+            }
+
+            $world[] = $row;
+        }
+
+        $this->world = $world;
+    }
+
+    public function getWorld()
+    {
+        return $this->world;
     }
 }
