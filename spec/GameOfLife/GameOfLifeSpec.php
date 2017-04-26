@@ -21,4 +21,9 @@ class GameOfLifeSpec extends ObjectBehavior
     {
         $this->getNextStatus('alive', 2)->shouldReturn('alive');
     }
+
+    function it_should_die_if_lives_in_overpopulation()
+    {
+        $this->getNextStatus('alive', 4)->shouldReturn('dead');
+    }
 }
