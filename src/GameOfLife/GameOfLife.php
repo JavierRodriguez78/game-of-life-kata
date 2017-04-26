@@ -119,4 +119,9 @@ class GameOfLife
 
         return $neighbours;
     }
+
+    public function countAliveNeighbours($cellCoordinates)
+    {
+        // TODO: write logic here
+    }
 }

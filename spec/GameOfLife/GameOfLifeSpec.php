@@ -56,4 +56,18 @@ class GameOfLifeSpec extends ObjectBehavior
             [1, 1]
         ]);
     }
+
+    function it_should_get_count_cell_alive_neighbours()
+    {
+        $world = [
+            [0, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 1, 0, 1],
+            [0, 0, 0, 0],
+        ];
+
+        $this->setWorld($world);
+
+        $this->countAliveNeighbours([2, 2])->shouldReturn(3);
+    }
 }
