@@ -7,11 +7,25 @@ namespace GameOfLife;
  */
 class GameOfLife
 {
+    const UNDERPOPULATION_THRESHOLD = 2;
+
     public function getNextStatus($currentStatus, $aliveNeighbours)
     {
-        if ($currentStatus === 'alive' && $aliveNeighbours < 2)
-        {
+        if (
+            $this->itsAlive($currentStatus)
+            && $this->itsUnderpopulation($aliveNeighbours)
+        ) {
             return 'dead';
         }
+    }
+
+    private function itsUnderpopulation($aliveNeighbours)
+    {
+        return $aliveNeighbours < self::UNDERPOPULATION_THRESHOLD;
+    }
+
+    private function itsAlive($currentStatus)
+    {
+        return $currentStatus === 'alive';
     }
 }
