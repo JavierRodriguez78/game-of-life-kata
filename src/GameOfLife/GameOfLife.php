@@ -99,11 +99,24 @@ class GameOfLife
 
     public function setWorld($world)
     {
-        // TODO: write logic here
+        $this->world = $world;
     }
 
-    public function getNeighbours($argument1)
+    public function getNeighbours($cellCoordinates)
     {
-        // TODO: write logic here
+        list($x, $y) = $cellCoordinates;
+        $maxHeight = count($this->world);
+        $maxWidth = count($this->world[0]);
+        $neighbours = [];
+
+        foreach (range(max(0, $y - 1), min($y + 1, $maxHeight - 1)) as $cy) {
+            foreach (range(max(0, $x - 1), min($x + 1, $maxWidth - 1)) as $cx) {
+                if (!($x === $cx && $y === $cy)) {
+                    $neighbours[] = [$cx, $cy];
+                }
+            }
+        }
+
+        return $neighbours;
     }
 }
