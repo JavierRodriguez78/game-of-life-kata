@@ -9,6 +9,7 @@ class GameOfLife
 {
     const UNDERPOPULATION_THRESHOLD = 2;
     const OVERPOPULATION_THRESHOLD = 3;
+    const REBORN_CONDITION = 3;
 
     public function getNextStatus($currentStatus, $aliveNeighbours)
     {
@@ -33,7 +34,10 @@ class GameOfLife
             return 'dead';
         }
 
-        if ($currentStatus === 'dead' && $aliveNeighbours === 3) {
+        if (
+            !$this->itsAlive($currentStatus)
+            && $this->shouldReborn($aliveNeighbours)
+        ) {
             return 'alive';
         }
     }
@@ -58,6 +62,11 @@ class GameOfLife
     private function itsOverpopulation($aliveNeighbours)
     {
         return $aliveNeighbours > self::OVERPOPULATION_THRESHOLD;
+    }
+
+    private function shouldReborn($aliveNeighbours)
+    {
+        return $aliveNeighbours === self::REBORN_CONDITION;
     }
 
     private function itsAlive($currentStatus)
