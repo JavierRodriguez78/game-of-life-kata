@@ -16,4 +16,9 @@ class GameOfLifeSpec extends ObjectBehavior
     {
         $this->getNextStatus('alive', 1)->shouldReturn('dead');
     }
+
+    function it_should_live_if_lives_in_equilibred_population()
+    {
+        $this->getNextStatus('alive', 2)->shouldReturn('alive');
+    }
 }
