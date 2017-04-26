@@ -122,6 +122,17 @@ class GameOfLife
 
     public function countAliveNeighbours($cellCoordinates)
     {
-        // TODO: write logic here
+        $neighbours = $this->getNeighbours($cellCoordinates);
+        $alive = 0;
+
+        foreach ($neighbours as $neighbour) {
+            list($x, $y) = $neighbour;
+
+            if ($this->world[$x][$y] === 1) {
+                $alive++;
+            }
+        }
+
+        return $alive;
     }
 }
