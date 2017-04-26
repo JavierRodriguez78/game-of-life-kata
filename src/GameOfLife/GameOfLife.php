@@ -101,4 +101,9 @@ class GameOfLife
     {
         // TODO: write logic here
     }
+
+    public function getNeighbours($argument1)
+    {
+        // TODO: write logic here
+    }
 }
