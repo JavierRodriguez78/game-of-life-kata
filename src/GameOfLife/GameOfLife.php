@@ -25,6 +25,13 @@ class GameOfLife
         ) {
             return 'alive';
         }
+
+        if (
+            $this->itsAlive($currentStatus)
+            && $this->itsOverpopulation($aliveNeighbours)
+        ) {
+            return 'dead';
+        }
     }
 
     private function itsUnderpopulation($aliveNeighbours)
@@ -42,6 +49,11 @@ class GameOfLife
         }
 
         return false;
+    }
+
+    private function itsOverpopulation($aliveNeighbours)
+    {
+        return $aliveNeighbours > self::OVERPOPULATION_THRESHOLD;
     }
 
     private function itsAlive($currentStatus)
