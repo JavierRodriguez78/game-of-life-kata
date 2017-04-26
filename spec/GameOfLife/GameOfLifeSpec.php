@@ -31,4 +31,11 @@ class GameOfLifeSpec extends ObjectBehavior
     {
         $this->getNextStatus('dead', 3)->shouldReturn('alive');
     }
+
+    function it_should_initialize_an_empty_world()
+    {
+        $this->initializeWorld(2, 3)->shouldReturn(null);
+        $expectedWorld = [[0, 0], [0, 0], [0, 0]];
+        $this->getWorld()->shouldReturn($expectedWorld);
+    }
 }
