@@ -20,4 +20,4 @@ install:
   - composer install
 
 script:
-  - ./bin/phpspec
+  - ./bin/phpspec run
