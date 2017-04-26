@@ -1,5 +1,7 @@
 # Game Of Life Kata
 
+## Descripción
+
 El juego de la vida es un autómata celular diseñado por el matemático británico John Horton Conway en 1970.
 
 Hizo su primera aparición pública en el número de octubre de 1970 de la revista Scientific American, en la columna de juegos matemáticos de Martin Gardner. Desde un punto de vista teórico, es interesante porque es equivalente a una máquina universal de Turing, es decir, todo lo que se puede computar algorítmicamente se puede computar en el juego de la vida.
@@ -13,5 +15,8 @@ Las transiciones dependen del número de células vecinas vivas:
 - Una célula muerta con exactamente 3 células vecinas vivas "nace" (al turno siguiente estará viva).
 
 - Una célula viva con 2 ó 3 células vecinas vivas sigue viva, en otro caso muere o permanece muerta (por "soledad" o "superpoblación").
+
+## Fase 2
+Realizar la kata con PHPSpec
 
 ![Game Of Life Rules](resources/game-of-life-rules.jpg)
