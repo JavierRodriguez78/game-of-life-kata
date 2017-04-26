@@ -26,4 +26,9 @@ class GameOfLifeSpec extends ObjectBehavior
     {
         $this->getNextStatus('alive', 4)->shouldReturn('dead');
     }
+
+    function it_should_reborn_if_dead_with_three_living_neighbours()
+    {
+        $this->getNextStatus('dead', 3)->shouldReturn('alive');
+    }
 }
