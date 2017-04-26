@@ -38,4 +38,22 @@ class GameOfLifeSpec extends ObjectBehavior
         $expectedWorld = [[0, 0], [0, 0], [0, 0]];
         $this->getWorld()->shouldReturn($expectedWorld);
     }
+
+    function it_should_get_cell_neighbours_list()
+    {
+        $world = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+        ];
+
+        $this->setWorld($world);
+
+        $this->getNeighbours([0, 0])->shouldReturn([
+            [1, 0],
+            [0, 1],
+            [1, 1]
+        ]);
+    }
 }

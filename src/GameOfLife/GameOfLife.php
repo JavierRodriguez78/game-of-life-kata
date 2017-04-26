@@ -96,4 +96,9 @@ class GameOfLife
     {
         return $this->world;
     }
+
+    public function setWorld($world)
+    {
+        // TODO: write logic here
+    }
 }
