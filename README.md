@@ -1,5 +1,7 @@
 # Game Of Life Kata
 
+[![Build Status](https://travis-ci.org/mangelsnc/game-of-life-kata.svg?branch=master)](https://travis-ci.org/mangelsnc/game-of-life-kata)
+
 ## Descripción
 
 El juego de la vida es un autómata celular diseñado por el matemático británico John Horton Conway en 1970.
@@ -17,6 +19,6 @@ Las transiciones dependen del número de células vecinas vivas:
 - Una célula viva con 2 ó 3 células vecinas vivas sigue viva, en otro caso muere o permanece muerta (por "soledad" o "superpoblación").
 
 ## Fase 2
-Realizar la kata con PHPSpeco
+Realizar la kata con PHPSpec
 
 ![Game Of Life Rules](resources/game-of-life-rules.jpg)
