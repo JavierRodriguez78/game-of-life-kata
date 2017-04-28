@@ -17,6 +17,6 @@ Las transiciones dependen del número de células vecinas vivas:
 - Una célula viva con 2 ó 3 células vecinas vivas sigue viva, en otro caso muere o permanece muerta (por "soledad" o "superpoblación").
 
 ## Fase 2
-Realizar la kata con PHPSpec
+Realizar la kata con PHPSpeco
 
 ![Game Of Life Rules](resources/game-of-life-rules.jpg)
